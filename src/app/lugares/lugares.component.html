@@ -1,0 +1,25 @@
+<!-- this creates a google map on the page with the given lat/lng from -->
+<!-- the component as the initial center of the map: -->
+<agm-map [latitude]="lat" [longitude]="lng">
+  <agm-marker *ngFor="let lugar of lugares"  [latitude]="lugar.lat" [longitude]="lugar.lgt"></agm-marker>
+</agm-map>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h2>Lugares Cercanos</h2>
+      <a class="btn btn-primaty" routerLink="/crear/new">Crear Nuevo Negocio</a>
+      <br/>
+      <ul class="list-group">
+        <ng-container *ngFor="let lugar of lugares">
+          <a routerLink="/crear/{{lugar.id}}" [queryParams]="{action: 'view'}">
+            <li class="list-group-item">{{lugar.nombre}}</li>
+          </a>
+        </ng-container>
+      </ul>
+    </div>
+    <div class="col-md-4">
+      <h2>Destacados</h2>
+    </div>
+  </div>
+</div>
